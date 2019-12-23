@@ -1,9 +1,6 @@
 #include<locale.h>
 #include <iostream>
 
-// #include <Core/Utility.h>
-#include <Core/Platform.h>
-
 #include "TestNIC.h"
 
 int main(int argc, char* argv[])
@@ -18,12 +15,6 @@ int main(int argc, char* argv[])
 
 	try
 	{
-		#ifdef _WIN64
-		WSADATA data;
-		int rc = WSAStartup(MAKEWORD(2, 2), &data);
-		std::cout << "WSAStartup() = " << rc;
-		#endif
-
 		TestNIC::TestNIC nic;
 		nic.ListenMulticast(local_ip);
 		nic.DoEventLoop();
